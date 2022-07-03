@@ -45,8 +45,9 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreen extends State<MainScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
-  List<int> words = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  List<int> words = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   int indexClickList = -1;
+  CacheItemList cacheItemList = CacheItemList(null);
 
   @override
   Widget build(BuildContext context) {
@@ -60,25 +61,19 @@ class _MainScreen extends State<MainScreen> {
           }),
           Expanded(
               child: Container(
-            child: ListView.builder(
-              itemCount: words.length,
-              itemBuilder: (BuildContext context, int index) {
-                return indexClickList == index
-                    ? ItemListWord(true, () {
-                        setState(() => {indexClickList = index});
-                      })
-                    : ItemListWord(false, () {
-                        setState(() => {indexClickList = index});
-                      });
-              },
-            ),
-          ))
+                  child: ListView.builder(
+            itemCount: words.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ItemListWord(cacheItemList);
+            },
+          )))
         ],
       ),
     );
   }
 }
 
-Widget getRow(int position) {
-  return Container();
+class CacheItemList {
+  ItemListWord? itemListWord;
+  CacheItemList(this.itemListWord);
 }
