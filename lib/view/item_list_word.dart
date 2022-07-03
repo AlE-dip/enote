@@ -18,6 +18,36 @@ class ItemListWord extends StatefulWidget {
 class ItemListWordState extends State<ItemListWord> {
   bool isExpand = false;
   double padding = 10;
+  List<int> words = [
+    10,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    10
+  ];
 
   CacheItemList cacheItemList;
   late ItemListWord thisItem;
@@ -126,30 +156,30 @@ class ItemListWordState extends State<ItemListWord> {
                     children: [
                       Expanded(
                         child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
+                              // height: double.infinity,
+                              // width: double.infinity,
+                              // margin: EdgeInsets.only(top: -30),
+                              clipBehavior: Clip.none,
                               // color: Colors.red,
-                              padding: EdgeInsets.only(
-                                  left: padding,
-                                  top: 15,
-                                  bottom: 15,
-                                  right: padding),
+                              padding:
+                                  EdgeInsets.only(left: padding, bottom: 10),
                               child: Text("english",
                                   style: TextStyle(
                                       color: Colors.black87, fontSize: 18)),
-                              alignment: Alignment.topLeft,
                             ),
                             Container(
+                              // height: double.infinity,
+                              // width: double.infinity,
                               // color: Colors.yellowAccent,
                               padding: EdgeInsets.only(
-                                  left: padding,
-                                  top: 15,
-                                  bottom: 15,
-                                  right: padding),
-                              child: Text("vietnamese",
+                                  left: padding, top: 10, bottom: 20),
+                              child: Text("viet vi viet ",
                                   style: TextStyle(
                                       color: Colors.black54, fontSize: 18)),
-                              alignment: Alignment.topLeft,
                             ),
                           ],
                         ),
@@ -247,6 +277,163 @@ class ItemListWordState extends State<ItemListWord> {
                         ),
                       ),
                     ],
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                                child: Container(
+                              color: Colors.black12,
+                              padding: EdgeInsets.only(top: 1),
+                              margin: EdgeInsets.only(left: 10, right: 10),
+                            ))
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left: 10, right: 5, top: 5, bottom: 5),
+                              child: ImageIcon(
+                                AssetImage("assets/images/related.png"),
+                                size: 10,
+                              ),
+                            ),
+                            Expanded(
+                                child: Container(
+                              padding: EdgeInsets.only(right: 10),
+                              child: SizedBox(
+                                height: 15,
+                                width: MediaQuery.of(context).size.width,
+                                child: ListView.builder(
+                                    itemCount: words.length,
+                                    scrollDirection: Axis.horizontal,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return GestureDetector(child:
+                                          Container(
+                                            padding: EdgeInsets.only(top: 1, bottom: 1),
+                                            child: Card(
+                                            child: Container(
+                                              // color: Colors.deepOrange,
+                                              alignment: Alignment.center,
+                                              child: Text(
+                                                  "data" + words[index].toString(),
+                                                  style: TextStyle(
+                                                      color: Colors.black54,
+                                                      fontSize: 10)),
+                                              padding: EdgeInsets.only(
+                                                  left: 1, right: 1),
+                                            ),
+                                            margin:
+                                            EdgeInsets.only(left: 2, right: 2),
+                                          ),),
+                                      onTap: (){
+
+                                      },);
+                                    }),
+                              ),
+                            ))
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left: 10, right: 5, top: 5, bottom: 5),
+                              child: ImageIcon(
+                                AssetImage("assets/images/synonym.png"),
+                                size: 10,
+                              ),
+                            ),
+                            Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.only(right: 10),
+                                  child: SizedBox(
+                                    height: 15,
+                                    width: MediaQuery.of(context).size.width,
+                                    child: ListView.builder(
+                                        itemCount: words.length,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          return GestureDetector(child:
+                                          Container(
+                                            padding: EdgeInsets.only(top: 1, bottom: 1),
+                                            child: Card(
+                                              child: Container(
+                                                // color: Colors.deepOrange,
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                    "data" + words[index].toString(),
+                                                    style: TextStyle(
+                                                        color: Colors.black54,
+                                                        fontSize: 10)),
+                                                padding: EdgeInsets.only(
+                                                    left: 1, right: 1),
+                                              ),
+                                              margin:
+                                              EdgeInsets.only(left: 2, right: 2),
+                                            ),),
+                                            onTap: (){
+
+                                            },);
+                                        }),
+                                  ),
+                                ))
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left: 10, right: 5, top: 5, bottom: 5),
+                              child: ImageIcon(
+                                AssetImage("assets/images/antonym.png"),
+                                size: 10,
+                              ),
+                            ),
+                            Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.only(right: 10),
+                                  child: SizedBox(
+                                    height: 15,
+                                    width: MediaQuery.of(context).size.width,
+                                    child: ListView.builder(
+                                        itemCount: words.length,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          return GestureDetector(child:
+                                          Container(
+                                            padding: EdgeInsets.only(top: 1, bottom: 1),
+                                            child: Card(
+                                              child: Container(
+                                                // color: Colors.deepOrange,
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                    "data" + words[index].toString(),
+                                                    style: TextStyle(
+                                                        color: Colors.black54,
+                                                        fontSize: 10)),
+                                                padding: EdgeInsets.only(
+                                                    left: 1, right: 1),
+                                              ),
+                                              margin:
+                                              EdgeInsets.only(left: 2, right: 2),
+                                            ),),
+                                            onTap: (){
+
+                                            },);
+                                        }),
+                                  ),
+                                ))
+                          ],
+                        ),
+                      ],
+                    ),
                   )
                 ],
               )),
