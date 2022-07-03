@@ -6,5 +6,15 @@
   "import": "Import",
   "export": "Export",
   "remember": "Remember",
-  "more": "More"
+  "more": "More",
+  "translate": "Translate",
+  "setting": "Setting",
+  "type": "Type",
+  "tag": "Tag",
+  "text": "Text",
+  "search": "Search",
+  "english": "english",
+  "notify": "notify",
+  "bot": "bot",
+  "forget": "forget"
 }

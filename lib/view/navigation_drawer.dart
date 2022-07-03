@@ -1,3 +1,5 @@
+import 'package:enote/view/remember_screen.dart';
+import 'package:enote/view/setting_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +37,7 @@ class NavigationDrawer extends StatelessWidget{
                 ),
                 title: Text(StringSource.getText(context, "add")),
                 onTap: () => {
-                  null
+                  Navigator.pop(context),
                 },
               ),
               ListTile(
@@ -45,7 +47,7 @@ class NavigationDrawer extends StatelessWidget{
                 ),
                 title: Text(StringSource.getText(context, "game")),
                 onTap: () => {
-                  null
+                  Navigator.pop(context),
                 },
               ),
               ListTile(
@@ -55,7 +57,7 @@ class NavigationDrawer extends StatelessWidget{
                 ),
                 title: Text(StringSource.getText(context, "import")),
                 onTap: () => {
-                  null
+                  Navigator.pop(context),
                 },
               ),
               ListTile(
@@ -65,7 +67,7 @@ class NavigationDrawer extends StatelessWidget{
                 ),
                 title: Text(StringSource.getText(context, "export")),
                 onTap: () => {
-                  null
+                  Navigator.pop(context),
                 },
               ),
               ListTile(
@@ -75,7 +77,8 @@ class NavigationDrawer extends StatelessWidget{
                 ),
                 title: Text(StringSource.getText(context, "remember")),
                 onTap: () => {
-                  null
+                  Navigator.pop(context),
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => RememberScreen()))
                 },
               ),
               ListTile(
@@ -85,7 +88,8 @@ class NavigationDrawer extends StatelessWidget{
                 ),
                 title: Text(StringSource.getText(context, "more")),
                 onTap: () => {
-                  null
+                  Navigator.pop(context),
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SettingScreen()))
                 },
               ),
             ],

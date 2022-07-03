@@ -1,5 +1,9 @@
 import 'package:enote/model/config.dart';
 import 'package:enote/model/database/util_database.dart';
+import 'package:enote/view/app_header.dart';
+import 'package:enote/view/edit_text.dart';
+import 'package:enote/view/handle_word_screen.dart';
+import 'package:enote/view/item_list_word.dart';
 import 'package:enote/view/navigation_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -26,49 +30,51 @@ class MyApp extends StatelessWidget {
 }
 
 class MainScreen extends StatefulWidget {
+  MainScreen({super.key});
+
   late UtilDatabase utilDatabase;
   late Config config;
 
   @override
   State<StatefulWidget> createState() {
-    utilDatabase = UtilDatabase();
-    utilDatabase.initDatabase().whenComplete(() => {
-      utilDatabase.getConfig()
-    });
+    // utilDatabase = UtilDatabase();
+    // utilDatabase.initDatabase().whenComplete(() => {utilDatabase.getConfig()});
     return _MainScreen();
   }
 }
 
 class _MainScreen extends State<MainScreen> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+  List<int> words = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  int indexClickList = -1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          StringSource.getText(context, "app_bar_title"),
-        ),
-        actions: <Widget>[
-          new IconButton(
-            icon: new Icon(Icons.search_sharp),
-            onPressed: () {
-              null;
-            },
-          ),
-          new IconButton(
-            icon: new Icon(Icons.g_translate_sharp),
-            onPressed: () {
-              null;
-            },
-          )
+      key: _key,
+      drawer: NavigationDrawer(),
+      body: Column(
+        children: [
+          AppHeader(() {
+            _key.currentState!.openDrawer();
+          }),
+          Expanded(
+              child: Container(
+            child: ListView.builder(
+              itemCount: words.length,
+              itemBuilder: (BuildContext context, int index) {
+                return indexClickList == index
+                    ? ItemListWord(true, () {
+                        setState(() => {indexClickList = index});
+                      })
+                    : ItemListWord(false, () {
+                        setState(() => {indexClickList = index});
+                      });
+              },
+            ),
+          ))
         ],
       ),
-      drawer: NavigationDrawer(),
-      body: Container(
-          // child: ListView.builder(
-          //     itemBuilder: (BuildContext context, int position) {
-          //       return getRow(position);
-          //     }),
-          ),
     );
   }
 }
