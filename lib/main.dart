@@ -75,5 +75,6 @@ class _MainScreen extends State<MainScreen> {
 
 class CacheItemList {
   ItemListWord? itemListWord;
+
   CacheItemList(this.itemListWord);
 }

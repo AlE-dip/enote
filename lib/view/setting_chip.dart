@@ -28,7 +28,7 @@ class _SettingChip extends State<SettingChip> {
   EditText createEditText(String hint){
     editText = EditText();
     editText.editTextState.hint = hint;
-    editText.editTextState.icon = ImageIcon(
+    editText.editTextState.iconLeft = ImageIcon(
       AssetImage("assets/images/settings.png"),
       size: 24,
     );//Icon(Icons.settings_sharp, size: 30,);
@@ -59,7 +59,7 @@ class _SettingChip extends State<SettingChip> {
                       ? Expanded(
                           child: Text(textName),
                         )
-                      : createEditText(textName),
+                      : Expanded(child: createEditText(textName),),
                   !isOpen
                       ? Padding(
                           padding: EdgeInsets.all(_padding),

@@ -36,7 +36,7 @@ class AppHeaderState extends State<AppHeader> {
   EditText createEditText(String hint) {
     editText = EditText();
     editText.editTextState.hint = hint;
-    editText.editTextState.icon = GestureDetector(
+    editText.editTextState.iconRight = GestureDetector(
       child: Icon(Icons.search_sharp),
       onTap: () {
         setState(() => {
@@ -44,7 +44,6 @@ class AppHeaderState extends State<AppHeader> {
             });
       },
     );
-    editText.editTextState.iconLeft = false;
     // editText.editTextState.haveAnim = true;
     return editText;
   }
@@ -67,8 +66,8 @@ class AppHeaderState extends State<AppHeader> {
                 ),
                 isSearch
                     ? Container(
-                        child: createEditText(
-                            StringSource.getText(context, "search")),
+                        child: Expanded(child: createEditText(
+                          StringSource.getText(context, "search"),)),
                       )
                     : Expanded(
                         child: Text(
